@@ -1,5 +1,4 @@
 package com.taxicompany.app.ui.theme
-
 import androidx.compose.material3.Typography
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.TextStyle
@@ -12,26 +11,22 @@ import taxicompanyapp.composeapp.generated.resources.anton_regular
 import taxicompanyapp.composeapp.generated.resources.bebas_neue_regular
 import taxicompanyapp.composeapp.generated.resources.merriweather_bold
 import taxicompanyapp.composeapp.generated.resources.merriweather_regular
-
 val displayFontFamily: FontFamily
     @Composable get() {
         val font = Font(resource = Res.font.anton_regular, weight = FontWeight.Bold)
         return FontFamily(font)
     }
-
 val bodyFontFamily: FontFamily
     @Composable get() {
         val regular = Font(resource = Res.font.merriweather_regular, weight = FontWeight.Normal)
         val bold = Font(resource = Res.font.merriweather_bold, weight = FontWeight.Bold)
         return FontFamily(regular, bold)
     }
-
 val decoratedFontFamily: FontFamily
     @Composable get() {
         val font = Font(resource = Res.font.bebas_neue_regular, weight = FontWeight.Normal)
         return FontFamily(font)
     }
-
 val Typography.decorated: TextStyle
     @Composable get() = TextStyle(
         fontFamily = decoratedFontFamily,
@@ -40,13 +35,19 @@ val Typography.decorated: TextStyle
         letterSpacing = 0.5.sp
     )
 
-private fun TextStyle.withScale(isDesktop: Boolean, sizePlus: Int): TextStyle {
-    return if (isDesktop) {
-        this.copy(fontSize = (this.fontSize.value + sizePlus).sp)
-    } else {
-        this
-    }
+// mobileMultiplier: globalny mnoznik czcionki na telefonie (1.0 = bez zmian).
+// desktopExtraMultiplier: DODATKOWY mnoznik na wierzch mobileMultiplier, tylko
+// na desktopie (>= 700dp) - stad na desktopie efektywny mnoznik to
+// mobileMultiplier * desktopExtraMultiplier.
+// lineHeight skalujemy tym samym stosunkiem co fontSize, zeby linie tekstu
+// nie zaczely sie zageszczac/zachodzic na siebie przy wiekszym foncie.
+private fun TextStyle.withScale(isDesktop: Boolean, mobileMultiplier: Float, desktopExtraMultiplier: Float = 1f): TextStyle {
+    val multiplier = mobileMultiplier * if (isDesktop) desktopExtraMultiplier else 1f
+    val newSize = fontSize.value * multiplier
+    val newLineHeight = if (lineHeight.isSp) (lineHeight.value * multiplier).sp else lineHeight
+    return this.copy(fontSize = newSize.sp, lineHeight = newLineHeight)
 }
+
 private val baseline = Typography()
 
 @Composable
@@ -54,27 +55,28 @@ fun getAppTypography(isDesktop: Boolean): Typography {
     val display = displayFontFamily
     val body = bodyFontFamily
 
+    // tu jest globalny procent do zwiększenia/zmniejszenia czcionki (1.15f 115%)
+    val mobileScale = 1.15f
+
     return Typography(
-        // Nagłówki na desktopie powiększamy np. o 4sp lub 6sp
-        displayLarge = baseline.displayLarge.copy(fontFamily = display).withScale(isDesktop, 12),
-        displayMedium = baseline.displayMedium.copy(fontFamily = display).withScale(isDesktop, 8),
-        displaySmall = baseline.displaySmall.copy(fontFamily = display).withScale(isDesktop, 8),
+        displayLarge = baseline.displayLarge.copy(fontFamily = display).withScale(isDesktop, mobileScale, 1.25f),
+        displayMedium = baseline.displayMedium.copy(fontFamily = display).withScale(isDesktop, mobileScale, 1.18f),
+        displaySmall = baseline.displaySmall.copy(fontFamily = display).withScale(isDesktop, mobileScale, 1.18f),
 
-        headlineLarge = baseline.headlineLarge.copy(fontFamily = display).withScale(isDesktop, 4),
-        headlineMedium = baseline.headlineMedium.copy(fontFamily = display).withScale(isDesktop, 2),
-        headlineSmall = baseline.headlineSmall.copy(fontFamily = display).withScale(isDesktop, 2),
+        headlineLarge = baseline.headlineLarge.copy(fontFamily = display).withScale(isDesktop, mobileScale, 1.12f),
+        headlineMedium = baseline.headlineMedium.copy(fontFamily = display).withScale(isDesktop, mobileScale, 1.08f),
+        headlineSmall = baseline.headlineSmall.copy(fontFamily = display).withScale(isDesktop, mobileScale, 1.08f),
 
-        titleLarge = baseline.titleLarge.copy(fontFamily = display).withScale(isDesktop, 2),
-        titleMedium = baseline.titleMedium.copy(fontFamily = display).withScale(isDesktop, 2),
-        titleSmall = baseline.titleSmall.copy(fontFamily = display).withScale(isDesktop, 2),
+        titleLarge = baseline.titleLarge.copy(fontFamily = display).withScale(isDesktop, mobileScale, 1.08f),
+        titleMedium = baseline.titleMedium.copy(fontFamily = display).withScale(isDesktop, mobileScale, 1.08f),
+        titleSmall = baseline.titleSmall.copy(fontFamily = display).withScale(isDesktop, mobileScale, 1.08f),
 
-        // Tekst główny (body) powiększamy np. o 2sp, żeby był czytelniejszy na monitorze
-        bodyLarge = baseline.bodyLarge.copy(fontFamily = body).withScale(isDesktop, 2),
-        bodyMedium = baseline.bodyMedium.copy(fontFamily = body).withScale(isDesktop, 2),
-        bodySmall = baseline.bodySmall.copy(fontFamily = body).withScale(isDesktop, 1),
+        bodyLarge = baseline.bodyLarge.copy(fontFamily = body).withScale(isDesktop, mobileScale, 1.06f),
+        bodyMedium = baseline.bodyMedium.copy(fontFamily = body).withScale(isDesktop, mobileScale, 1.06f),
+        bodySmall = baseline.bodySmall.copy(fontFamily = body).withScale(isDesktop, mobileScale, 1.04f),
 
-        labelLarge = baseline.labelLarge.copy(fontFamily = body).withScale(isDesktop, 1),
-        labelMedium = baseline.labelMedium.copy(fontFamily = body).withScale(isDesktop, 1),
-        labelSmall = baseline.labelSmall.copy(fontFamily = body).withScale(isDesktop, 1),
+        labelLarge = baseline.labelLarge.copy(fontFamily = body).withScale(isDesktop, mobileScale, 1.04f),
+        labelMedium = baseline.labelMedium.copy(fontFamily = body).withScale(isDesktop, mobileScale, 1.04f),
+        labelSmall = baseline.labelSmall.copy(fontFamily = body).withScale(isDesktop, mobileScale, 1.04f),
     )
 }
