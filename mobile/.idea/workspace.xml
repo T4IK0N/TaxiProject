@@ -57,8 +57,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2064eacd-fec7-401b-bd0a-366aa60460fc" name="Changes" comment="added icon">
-      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/composeApp/src/main/res/mipmap-hdpi/logo.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/composeApp/src/main/res/mipmap-xhdpi/logo.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/composeApp/src/main/res/mipmap-xhdpi/logo_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/composeApp/src/main/res/mipmap-xxhdpi/logo.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/composeApp/src/main/res/mipmap-xxxhdpi/logo.webp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composeApp/src/androidMain/logo-playstore.png" beforeDir="false" afterPath="$PROJECT_DIR$/composeApp/src/androidMain/logo-playstore.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composeApp/src/main/res/drawable/logo.xml" beforeDir="false" afterPath="$PROJECT_DIR$/composeApp/src/main/res/drawable/taxiproject_logo.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composeApp/src/main/res/drawable/logo_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/composeApp/src/main/res/drawable/logo_background.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composeApp/src/main/res/drawable/logo_foreground.xml" beforeDir="false" afterPath="$PROJECT_DIR$/composeApp/src/main/res/drawable/logo_foreground.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composeApp/src/main/res/drawable/logo_monochrome.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/composeApp/src/main/res/mipmap-anydpi-v26/logo.xml" beforeDir="false" afterPath="$PROJECT_DIR$/composeApp/src/main/res/mipmap-anydpi-v26/logo.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composeApp/src/main/res/mipmap-anydpi-v26/logo_round.xml" beforeDir="false" afterPath="$PROJECT_DIR$/composeApp/src/main/res/mipmap-anydpi-v26/logo_round.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composeApp/src/main/res/mipmap-hdpi/logo_round.webp" beforeDir="false" afterPath="$PROJECT_DIR$/composeApp/src/main/res/mipmap-hdpi/logo_round.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composeApp/src/main/res/mipmap-mdpi/logo.webp" beforeDir="false" afterPath="$PROJECT_DIR$/composeApp/src/main/res/mipmap-mdpi/logo.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composeApp/src/main/res/mipmap-mdpi/logo_round.webp" beforeDir="false" afterPath="$PROJECT_DIR$/composeApp/src/main/res/mipmap-mdpi/logo_round.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composeApp/src/main/res/mipmap-xxhdpi/logo_round.webp" beforeDir="false" afterPath="$PROJECT_DIR$/composeApp/src/main/res/mipmap-xxhdpi/logo_round.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composeApp/src/main/res/mipmap-xxxhdpi/logo_round.webp" beforeDir="false" afterPath="$PROJECT_DIR$/composeApp/src/main/res/mipmap-xxxhdpi/logo_round.webp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
