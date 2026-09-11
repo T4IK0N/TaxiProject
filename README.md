@@ -1,4 +1,4 @@
-# Taxi App
+# Taxi Project
 
 `TaxiProject` jest **monorepo** zawierającym aplikację mobilną/desktopową, backend oraz aplikację webową.
 
