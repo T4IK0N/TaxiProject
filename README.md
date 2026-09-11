@@ -112,7 +112,7 @@ Przy pierwszym uruchomieniu Gradle może potrzebować kilku minut na pobranie za
 
 Gotową aplikację na Androida można pobrać bezpośrednio z tego repozytorium w sekcji **Releases**.
 
-👉 [Pobierz `TaxiProject.apk`](../../releases/latest)
+[Pobierz `TaxiProject.apk`](../../releases/latest)
 
 Po pobraniu pliku `.apk` można zainstalować aplikację bezpośrednio na urządzeniu z Androidem.
 
