@@ -22,7 +22,7 @@ val networkModule = module {
     single { HttpClientFactory.create(get()) }
 
     single { AuthApi(get()) }
-    single { AuthRepository(get(), get()) }
+    single { AuthRepository(get(), get(), get()) }
 
     single { DriversApi(get()) }
     single { DriversRepository(get()) }
