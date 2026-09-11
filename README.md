@@ -93,6 +93,18 @@ Do uruchomienia aplikacji na Androidzie potrzebujesz:
 
 Do uruchomienia wersji desktopowej nie są wymagane dodatkowe narzędzia poza środowiskiem Java/JDK.
 
+## Pobranie aplikacji
+
+Gotową aplikację na Androida można pobrać bezpośrednio z tego repozytorium w sekcji **Releases**.
+
+[Pobierz `TaxiProject.apk`](../../releases/latest)
+
+Po pobraniu pliku `.apk` można zainstalować aplikację bezpośrednio na urządzeniu z Androidem.
+
+Jeżeli chcesz samodzielnie zbudować aplikację, przejdź do sekcji **Android** poniżej.
+
+> **Uwaga:** podczas instalacji Android może wyświetlić ostrzeżenie dotyczące aplikacji spoza Google Play. Jeśli pojawi się pytanie o zezwolenie na instalację lub potwierdzenie bezpieczeństwa aplikacji, należy zaakceptować je, jeśli aplikacja pochodzi z tego repozytorium.
+
 ## Uruchomienie projektu
 
 Sklonuj repozytorium:
@@ -107,18 +119,6 @@ Następnie otwórz projekt w Android Studio:
 **Android Studio → Open → wybierz katalog 'mobile' z katalogu projektu**
 
 Przy pierwszym uruchomieniu Gradle może potrzebować kilku minut na pobranie zależności i synchronizację projektu.
-
-## Pobranie aplikacji
-
-Gotową aplikację na Androida można pobrać bezpośrednio z tego repozytorium w sekcji **Releases**.
-
-[Pobierz `TaxiProject.apk`](../../releases/latest)
-
-Po pobraniu pliku `.apk` można zainstalować aplikację bezpośrednio na urządzeniu z Androidem.
-
-Jeżeli chcesz samodzielnie zbudować aplikację, przejdź do sekcji **Android** poniżej.
-
-> **Uwaga:** podczas instalacji Android może wyświetlić ostrzeżenie dotyczące aplikacji spoza Google Play. Jeśli pojawi się pytanie o zezwolenie na instalację lub potwierdzenie bezpieczeństwa aplikacji, należy zaakceptować je, jeśli aplikacja pochodzi z tego repozytorium.
 
 ## Android
 
@@ -235,6 +235,26 @@ Nie należy umieszczać w repozytorium:
 ## Znane ograniczenia
 
 Projekt jest aktywnie rozwijany. Niektóre elementy mogą jeszcze wymagać dopracowania.
+
+### Brak rejestracji
+
+Aplikacja KMP nie udostępnia funkcji samodzielnej rejestracji użytkownika.
+
+Wynika to z założeń projektu — aplikacja mobilna/desktopowa jest przeznaczona wyłącznie dla kierowców taxi, którzy zostali wcześniej dodani do systemu przez administratora lub osobę zarządzającą.
+
+Dodawanie i zarządzanie kierowcami będzie odbywać się za pośrednictwem aplikacji webowej, która jest obecnie w trakcie rozwoju i docelowo będzie pełnić funkcję panelu administracyjnego systemu.
+
+Z tego powodu aplikacja kierowcy udostępnia jedynie **logowanie**. Kierowca otrzymuje dane dostępowe po wcześniejszym utworzeniu jego konta w systemie.
+
+Schemat działania wygląda następująco:
+
+1. Administrator lub osoba zarządzająca dodaje kierowcę w aplikacji webowej.
+2. Dla kierowcy tworzone jest konto w systemie.
+3. Kierowca otrzymuje dane potrzebne do logowania.
+4. Kierowca loguje się za pomocą aplikacji mobilnej lub desktopowej.
+5. Po zalogowaniu aplikacja pobiera dane kierowcy z backendu.
+
+Takie podejście pozwala ograniczyć dostęp do aplikacji wyłącznie do użytkowników, którzy zostali wcześniej zweryfikowani i dodani do systemu.
 
 ### Zmiana orientacji Androida
 
