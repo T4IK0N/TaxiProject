@@ -108,6 +108,18 @@ Następnie otwórz projekt w Android Studio:
 
 Przy pierwszym uruchomieniu Gradle może potrzebować kilku minut na pobranie zależności i synchronizację projektu.
 
+## Pobranie aplikacji
+
+Gotową aplikację na Androida można pobrać bezpośrednio z tego repozytorium w sekcji **Releases**.
+
+👉 [Pobierz `TaxiProject.apk`](../../releases/latest)
+
+Po pobraniu pliku `.apk` można zainstalować aplikację bezpośrednio na urządzeniu z Androidem.
+
+Jeżeli chcesz samodzielnie zbudować aplikację, przejdź do sekcji **Android** poniżej.
+
+> **Uwaga:** podczas instalacji Android może wyświetlić ostrzeżenie dotyczące aplikacji spoza Google Play. Jeśli pojawi się pytanie o zezwolenie na instalację lub potwierdzenie bezpieczeństwa aplikacji, należy zaakceptować je, jeśli aplikacja pochodzi z tego repozytorium.
+
 ## Android
 
 Najprostszym sposobem uruchomienia aplikacji jest Android Studio.
@@ -116,6 +128,14 @@ Najprostszym sposobem uruchomienia aplikacji jest Android Studio.
 2. Wybierz konfigurację aplikacji.
 3. Wybierz urządzenie docelowe.
 4. Kliknij **Run**.
+
+> **Możliwy problem:** przy pierwszym uruchomieniu może pojawić się błąd `SDK location not found`. Oznacza to, że Android Studio nie może znaleźć Android SDK. Sprawdź jego lokalizację w **Settings → Languages & Frameworks → Android SDK**, a następnie utwórz plik `mobile/local.properties` z wpisem:
+>
+> ```properties
+> sdk.dir=C:/Users/Username/AppData/Local/Android/Sdk
+> ```
+>
+> Podstaw własną ścieżkę do Android SDK. Pliku `local.properties` nie należy commitować do repozytorium.
 
 Aplikację można również zbudować i zainstalować z terminala:
 
