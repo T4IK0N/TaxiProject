@@ -2,7 +2,7 @@ package com.taxicompany.app.core
 
 import com.russhwolf.settings.Settings
 
-// TODO: Refactor to secure storage (Keystore/Keychain). Standard Settings stores tokens in plain text. Library: https://github.com/russhwolf/multiplatform-settings
+// TODO: Refactor to secure storage (Keystore/Keychain). Standard settings stores tokens in plain text. Library: https://github.com/russhwolf/multiplatform-settings
 
 interface TokenStorage {
     fun getAccessToken(): String?
