@@ -1,4 +1,6 @@
-# this is for windows (local)
+# This configuration file is used to build and spin up the complete application 
+# stack (PostgreSQL, Redis, Django Backend, Next.js Web Frontend, and Celery) 
+# locally using docker compose.
 services:
 
   db:

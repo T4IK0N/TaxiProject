@@ -256,10 +256,6 @@ Schemat działania wygląda następująco:
 
 Takie podejście pozwala ograniczyć dostęp do aplikacji wyłącznie do użytkowników, którzy zostali wcześniej zweryfikowani i dodani do systemu.
 
-### Zmiana orientacji Androida
-
-Zmiana konfiguracji aplikacji, np. obrót ekranu, może powodować ponowne utworzenie stanu niektórych ekranów.
-
 ### Przechowywanie danych uwierzytelniających
 
 Obecna implementacja przechowywania danych sesji jest rozwiązaniem przeznaczonym przede wszystkim do celów rozwojowych i testowych.
