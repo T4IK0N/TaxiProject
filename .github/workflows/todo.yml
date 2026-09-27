@@ -1,0 +1,23 @@
+name: "Create Issues from TODOs"
+
+on:
+  push:
+    branches:
+      - main
+      - master
+      - develop
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: TODO to Issue
+        uses: alstr/todo-to-issue-action@v5
+        with:
+          INSERT_ISSUE_URL: true
+          CLOSE_ISSUES: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
