@@ -40,7 +40,7 @@ object HttpClientFactory {
             }
 
             install(Logging) {
-                level = LogLevel.INFO
+                level = LogLevel.NONE
             }
 
             install(Auth) {
