@@ -1,24 +1,28 @@
 # Taxi Project
 
-`TaxiProject` jest **monorepo** zawierającym aplikację mobilną/desktopową, backend oraz aplikację webową.
+🇵🇱 [Polska wersja](README.pl.md)
 
-Aplikacja webowa jest obecnie **w trakcie rozwoju** i docelowo będzie służyć jako panel administracyjny dla administratorów oraz osób zarządzających systemem.
+`TaxiProject` is a **monorepo** containing a mobile/desktop app, a backend and a web application.
 
-Aplikacja dla kierowców taxi zbudowana w **Kotlin Multiplatform** i **Compose Multiplatform**.
-Projekt wykorzystuje wspólny kod dla:
+The web application is currently **under development** and will eventually serve as an administration panel for administrators and people managing the system.
+
+The app for taxi drivers is built with **Kotlin Multiplatform** and **Compose Multiplatform**.
+The project shares code across:
 
 * Android
 * Desktop (Windows / macOS / Linux)
 
-Aplikacja komunikuje się z backendem poprzez REST API i nie wymaga lokalnej bazy danych.
+The app communicates with the backend through a REST API and does not require a local database.
 
-## Technologie
+## Technologies
 
-### Aplikacja
+### Application
 
 * Kotlin
 * Kotlin Multiplatform
 * Compose Multiplatform
+* Koin (dependency injection)
+* Ktor Client
 * Android
 * JVM / Desktop
 * Gradle
@@ -31,7 +35,7 @@ Aplikacja komunikuje się z backendem poprzez REST API i nie wymaga lokalnej baz
 * PostgreSQL
 * JWT
 
-### Infrastruktura
+### Infrastructure
 
 * PostgreSQL
 * Redis
@@ -39,29 +43,43 @@ Aplikacja komunikuje się z backendem poprzez REST API i nie wymaga lokalnej baz
 * Docker
 * Docker Compose
 
-## Architektura
+## Architecture
 
-Projekt wykorzystuje wspólny kod Kotlin Multiplatform z osobnymi implementacjami elementów zależnych od platformy.
-Główne elementy aplikacji obejmują m.in.:
+The project uses shared Kotlin Multiplatform code with separate implementations of platform-dependent components.
+The main features of the app include:
 
-* logowanie użytkownika,
-* grafik kierowcy,
-* informacje o pojeździe,
-* tankowania,
-* profil kierowcy.
+* user login,
+* driver schedule,
+* vehicle information,
+* fuel logs,
+* driver profile.
 
-Dane aplikacji są pobierane z backendu poprzez API.
-Aplikacja nie przechowuje trwałej lokalnej kopii danych biznesowych. Po wejściu na poszczególne ekrany dane są pobierane z serwera.
+The app data is fetched from the backend through the API.
+The app does not keep a persistent local copy of business data. Data is fetched from the server whenever a screen is opened.
+
+### Dependency injection
+
+Dependencies are wired with Koin. The shared `App(platformModule)` composable starts Koin with the common modules (`appModules`) plus a **platform module** passed in from each platform's entry point. The platform module provides the pieces that cannot live in shared code, such as the platform-specific `SecretStore` used for storing tokens securely (see [Authentication](#authentication)).
+
+```kotlin
+// shared code
+@Composable
+fun App(platformModule: Module) {
+    KoinApplication(application = { modules(appModules + platformModule) }) {
+        // ...
+    }
+}
+```
 
 ## Backend
 
-Aplikacja korzysta z API:
+The app uses the API at:
 
 `https://api-taxi.gasowski.eu`
 
-Adres API jest konfigurowany w `PlatformConfig` dla poszczególnych platform.
+The API address is configured in `PlatformConfig` for each platform.
 
-Przykładowa konfiguracja:
+Example configuration:
 
 ```kotlin
 actual object PlatformConfig {
@@ -69,105 +87,107 @@ actual object PlatformConfig {
 }
 ```
 
-> W przypadku uruchamiania własnego backendu adres API można zmienić w konfiguracji projektu.
+> If you run your own backend, you can change the API address in the project configuration.
 
-## Wymagania
+## Requirements
 
-Do pracy nad projektem potrzebujesz:
+To work on the project you need:
 
 * Android Studio
-* JDK 17 lub nowszego
+* JDK 17 or newer
 * Git
 
-Android Studio zawiera odpowiednie narzędzia potrzebne do pracy z Kotlin Multiplatform.
+Android Studio includes the tools required to work with Kotlin Multiplatform.
 
 ### Android
 
-Do uruchomienia aplikacji na Androidzie potrzebujesz:
+To run the app on Android you need:
 
-* emulatora Androida skonfigurowanego w Android Studio
-  lub:
-* fizycznego urządzenia z włączonym debugowaniem USB.
+* an Android emulator configured in Android Studio
+  or:
+* a physical device with USB debugging enabled.
 
 ### Desktop
 
-Do uruchomienia wersji desktopowej nie są wymagane dodatkowe narzędzia poza środowiskiem Java/JDK.
+Running the desktop version requires no additional tools beyond a Java/JDK environment.
 
-## Pobranie aplikacji
+On Linux, secure token storage relies on the system **Secret Service** (e.g. GNOME Keyring or KWallet), so one of them has to be installed and running.
 
-Gotową aplikację na Androida można pobrać bezpośrednio z tego repozytorium w sekcji **Releases**.
+## Download
 
-[Pobierz `TaxiProject.apk`](../../releases/latest)
+A ready-to-install Android app can be downloaded directly from this repository in the **Releases** section.
 
-Po pobraniu pliku `.apk` można zainstalować aplikację bezpośrednio na urządzeniu z Androidem.
+[Download `TaxiProject.apk`](../../releases/latest)
 
-Jeżeli chcesz samodzielnie zbudować aplikację, przejdź do sekcji **Android** poniżej.
+After downloading the `.apk` file you can install the app directly on an Android device.
 
-> **Uwaga:** podczas instalacji Android może wyświetlić ostrzeżenie dotyczące aplikacji spoza Google Play. Jeśli pojawi się pytanie o zezwolenie na instalację lub potwierdzenie bezpieczeństwa aplikacji, należy zaakceptować je, jeśli aplikacja pochodzi z tego repozytorium.
+If you want to build the app yourself, see the **Android** section below.
 
-## Uruchomienie projektu
+> **Note:** during installation Android may show a warning about apps from outside Google Play. If you are asked to allow the installation or to confirm the app's safety, accept it provided the app comes from this repository.
 
-Sklonuj repozytorium:
+## Running the project
+
+Clone the repository:
 
 ```bash
 git clone https://github.com/T4IK0N/TaxiProject.git
 cd TaxiProject
 ```
 
-Następnie otwórz projekt w Android Studio:
+Then open the project in Android Studio:
 
-**Android Studio → Open → wybierz katalog 'mobile' z katalogu projektu**
+**Android Studio → Open → select the `mobile` directory inside the project directory**
 
-Przy pierwszym uruchomieniu Gradle może potrzebować kilku minut na pobranie zależności i synchronizację projektu.
+On first launch Gradle may need a few minutes to download dependencies and sync the project.
 
 ## Android
 
-Najprostszym sposobem uruchomienia aplikacji jest Android Studio.
+The easiest way to run the app is Android Studio.
 
-1. Uruchom emulator lub podłącz urządzenie.
-2. Wybierz konfigurację aplikacji.
-3. Wybierz urządzenie docelowe.
-4. Kliknij **Run**.
+1. Start an emulator or connect a device.
+2. Select the app run configuration.
+3. Select the target device.
+4. Click **Run**.
 
-> **Możliwy problem:** przy pierwszym uruchomieniu może pojawić się błąd `SDK location not found`. Oznacza to, że Android Studio nie może znaleźć Android SDK. Sprawdź jego lokalizację w **Settings → Languages & Frameworks → Android SDK**, a następnie utwórz plik `mobile/local.properties` z wpisem:
+> **Possible issue:** on first launch you may see the `SDK location not found` error. It means Android Studio cannot find the Android SDK. Check its location in **Settings → Languages & Frameworks → Android SDK**, then create the `mobile/local.properties` file with the following entry:
 >
 > ```properties
 > sdk.dir=C:/Users/Username/AppData/Local/Android/Sdk
 > ```
 >
-> Podstaw własną ścieżkę do Android SDK. Pliku `local.properties` nie należy commitować do repozytorium.
+> Use your own path to the Android SDK. Do not commit `local.properties` to the repository.
 
-Aplikację można również zbudować i zainstalować z terminala:
+You can also build and install the app from the terminal:
 
 ```bash
 ./gradlew :composeApp:installDebug
 ```
 
-Nazwa taska może zależeć od aktualnej konfiguracji projektu.
+The task name may depend on the current project configuration.
 
 ## Desktop
 
-Wersję desktopową można uruchomić z Gradle:
+The desktop version can be run with Gradle:
 
 ```bash
 ./gradlew :composeApp:run
 ```
 
-Jeżeli task nie jest dostępny, sprawdź zadania Gradle:
+If the task is not available, list the Gradle tasks:
 
 ```bash
 ./gradlew tasks
 ```
 
-lub sekcję konfiguracji Compose Desktop w:
+or check the Compose Desktop configuration section in:
 
 ```text
 composeApp/build.gradle.kts
 ```
 
-## Struktura projektu
+## Project structure
 
-Przykładowa struktura:
+Example structure:
 
 ```text
 .
@@ -182,13 +202,21 @@ Przykładowa struktura:
 └── README.md
 ```
 
-Kod współdzielony pomiędzy platformami znajduje się w `commonMain`.
-Kod specyficzny dla Androida znajduje się w `androidMain`, natomiast kod platformy Desktop w `desktopMain`.
+Code shared between platforms lives in `commonMain`.
+Android-specific code lives in `androidMain`, and Desktop-specific code lives in `desktopMain`.
 
-## Konfiguracja API
+Platform-dependent parts of token storage are split as follows:
 
-Adres backendu jest definiowany przez `PlatformConfig`.
-Dzięki wykorzystaniu mechanizmu `expect` / `actual` poszczególne platformy mogą posiadać własną konfigurację:
+| Source set | Contents |
+|---|---|
+| `commonMain` | `TokenStorage`, `SecureTokenStorage`, `SecretStore` (interface) |
+| `androidMain` | `AndroidKeystoreSecretStore`, `MainActivity` (provides the platform module) |
+| `desktopMain` | `DesktopKeyringSecretStore`, desktop entry point (provides the platform module) |
+
+## API configuration
+
+The backend address is defined by `PlatformConfig`.
+Thanks to the `expect` / `actual` mechanism each platform can have its own configuration:
 
 ```kotlin
 expect object PlatformConfig {
@@ -196,76 +224,87 @@ expect object PlatformConfig {
 }
 ```
 
-Przykładowa implementacja platformowa:
+Example platform implementation:
 
 ```kotlin
 actual object PlatformConfig {
     actual val apiBaseUrl: String =
         "https://api-taxi.gasowski.eu"
+}
 ```
 
-Jeżeli uruchamiasz własne środowisko backendowe, zmień wartość `apiBaseUrl` odpowiednio do swojej konfiguracji.
+If you run your own backend environment, change the `apiBaseUrl` value to match your setup.
 
-## Dane aplikacji
+## App data
 
-Aplikacja korzysta z danych dostarczanych przez backend.
-W zależności od dostępnych danych użytkownik może korzystać m.in. z:
+The app uses data provided by the backend.
+Depending on the available data, the user can use, among others:
 
-* grafiku,
-* informacji dotyczących kierowcy,
-* informacji dotyczących pojazdu,
-* historii tankowań,
-* profilu.
+* the schedule,
+* driver information,
+* vehicle information,
+* fuel log history,
+* the profile.
 
-Dane wyświetlane w aplikacji zależą od danych dostępnych na skonfigurowanym serwerze API.
+The data displayed in the app depends on the data available on the configured API server.
 
-## Uwierzytelnianie
+## Authentication
 
-Aplikacja korzysta z uwierzytelniania po stronie backendu.
-Po zalogowaniu aplikacja wykorzystuje otrzymane dane uwierzytelniające do wykonywania kolejnych zapytań do API.
-Nie należy umieszczać w repozytorium:
+Authentication is handled by the backend (JWT).
+After logging in, the app uses the received access and refresh tokens to make subsequent API requests.
 
-* haseł użytkowników,
-* tokenów,
-* kluczy API,
-* sekretów,
-* kluczy prywatnych,
-* danych produkcyjnych.
+Tokens are stored in **platform-native secure storage**, behind a common `SecretStore` abstraction:
 
-## Znane ograniczenia
+| Platform | Storage |
+|---|---|
+| Android | AES-256-GCM encryption with a key held in the **Android Keystore**. The key never leaves the Keystore; only the ciphertext is kept in app-private preferences. |
+| Desktop | The operating system credential store (Windows Credential Manager, macOS Keychain, Linux Secret Service), accessed through [java-keyring](https://github.com/javakeyring/java-keyring). |
 
-Projekt jest aktywnie rozwijany. Niektóre elementy mogą jeszcze wymagać dopracowania.
+If the stored tokens cannot be decrypted (for example after a backup restore on another device, or when the Keystore key is lost), they are discarded and the user simply has to log in again.
 
-### Brak rejestracji
+Do not commit to the repository:
 
-Aplikacja KMP nie udostępnia funkcji samodzielnej rejestracji użytkownika.
+* user passwords,
+* tokens,
+* API keys,
+* secrets,
+* private keys,
+* production data.
 
-Wynika to z założeń projektu — aplikacja mobilna/desktopowa jest przeznaczona wyłącznie dla kierowców taxi, którzy zostali wcześniej dodani do systemu przez administratora lub osobę zarządzającą.
+## Known limitations
 
-Dodawanie i zarządzanie kierowcami będzie odbywać się za pośrednictwem aplikacji webowej, która jest obecnie w trakcie rozwoju i docelowo będzie pełnić funkcję panelu administracyjnego systemu.
+The project is under active development. Some elements may still need polishing.
 
-Z tego powodu aplikacja kierowcy udostępnia jedynie **logowanie**. Kierowca otrzymuje dane dostępowe po wcześniejszym utworzeniu jego konta w systemie.
+### No registration
 
-Schemat działania wygląda następująco:
+The KMP app does not offer self-registration.
 
-1. Administrator lub osoba zarządzająca dodaje kierowcę w aplikacji webowej.
-2. Dla kierowcy tworzone jest konto w systemie.
-3. Kierowca otrzymuje dane potrzebne do logowania.
-4. Kierowca loguje się za pomocą aplikacji mobilnej lub desktopowej.
-5. Po zalogowaniu aplikacja pobiera dane kierowcy z backendu.
+This follows from the project's assumptions: the mobile/desktop app is intended exclusively for taxi drivers who were previously added to the system by an administrator or a manager.
 
-Takie podejście pozwala ograniczyć dostęp do aplikacji wyłącznie do użytkowników, którzy zostali wcześniej zweryfikowani i dodani do systemu.
+Adding and managing drivers will be done through the web application, which is currently under development and will eventually act as the system's administration panel.
 
-### Przechowywanie danych uwierzytelniających
+For this reason the driver app offers **login** only. A driver receives access credentials once their account has been created in the system.
 
-Obecna implementacja przechowywania danych sesji jest rozwiązaniem przeznaczonym przede wszystkim do celów rozwojowych i testowych.
-Docelowo mechanizm ten będzie zastąpiony rozwiązaniem wykorzystującym bezpieczny magazyn systemowy.
+How it works:
 
-### Odświeżanie grafiku
+1. An administrator or manager adds the driver in the web application.
+2. An account is created for the driver in the system.
+3. The driver receives the credentials needed to log in.
+4. The driver logs in using the mobile or desktop app.
+5. After logging in, the app fetches the driver's data from the backend.
 
-W przypadku wygaśnięcia sesji podczas pobierania danych może być konieczne ponowne zalogowanie użytkownika.
+This approach restricts access to the app to users who have been verified and added to the system beforehand.
 
-## Status projektu
+### Token storage
 
-Projekt jest w aktywnym rozwoju.
-Niektóre elementy architektury i interfejsu mogą ulec zmianie w kolejnych wersjach.
+* Tokens previously stored by older versions in plain-text settings are not migrated, so users have to log in once after updating.
+* On Linux desktop, a running Secret Service (GNOME Keyring / KWallet) is required.
+
+### Schedule refresh
+
+If the session expires while data is being fetched, the user may have to log in again.
+
+## Project status
+
+The project is under active development.
+Some elements of the architecture and the interface may change in future versions.

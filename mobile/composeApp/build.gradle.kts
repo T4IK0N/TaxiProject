@@ -76,6 +76,7 @@ kotlin {
             implementation(libs.ktor.client.okhttp)
             implementation(libs.sqldelight.sqlite.driver)
             implementation(libs.kotlinx.coroutines.swing)
+            implementation("com.github.javakeyring:java-keyring:1.0.4")
         }
     }
 }

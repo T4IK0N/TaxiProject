@@ -15,11 +15,6 @@
           <theme>@style/Theme.TaxiCompanyApp</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/composeApp/src/main/res/drawable/logo.xml">
-        <config>
-          <theme>@style/Theme.TaxiCompanyApp</theme>
-        </config>
-      </layout>
       <layout url="file://$PROJECT_DIR$/composeApp/src/main/res/drawable/logo_background.xml">
         <config>
           <theme>@style/Theme.TaxiCompanyApp</theme>
@@ -56,25 +51,18 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2064eacd-fec7-401b-bd0a-366aa60460fc" name="Changes" comment="added icon">
-      <change afterPath="$PROJECT_DIR$/composeApp/src/main/res/mipmap-hdpi/logo.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/composeApp/src/main/res/mipmap-xhdpi/logo.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/composeApp/src/main/res/mipmap-xhdpi/logo_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/composeApp/src/main/res/mipmap-xxhdpi/logo.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/composeApp/src/main/res/mipmap-xxxhdpi/logo.webp" afterDir="false" />
+    <list default="true" id="2064eacd-fec7-401b-bd0a-366aa60460fc" name="Changes" comment="changed: TODO in TokenStorage.kt">
+      <change afterPath="$PROJECT_DIR$/composeApp/src/androidMain/kotlin/com/taxicompany/app/core/AndroidKeystoreSecretStore.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/composeApp/src/commonMain/kotlin/com/taxicompany/app/core/SecretStore.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/composeApp/src/commonMain/kotlin/com/taxicompany/app/core/SecureTokenStorage.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/composeApp/src/desktopMain/kotlin/com/taxicompany/app/core/DesktopKeyringSecretStore.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composeApp/src/androidMain/logo-playstore.png" beforeDir="false" afterPath="$PROJECT_DIR$/composeApp/src/androidMain/logo-playstore.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composeApp/src/main/res/drawable/logo.xml" beforeDir="false" afterPath="$PROJECT_DIR$/composeApp/src/main/res/drawable/taxiproject_logo.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composeApp/src/main/res/drawable/logo_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/composeApp/src/main/res/drawable/logo_background.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composeApp/src/main/res/drawable/logo_foreground.xml" beforeDir="false" afterPath="$PROJECT_DIR$/composeApp/src/main/res/drawable/logo_foreground.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composeApp/src/main/res/drawable/logo_monochrome.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/composeApp/src/main/res/mipmap-anydpi-v26/logo.xml" beforeDir="false" afterPath="$PROJECT_DIR$/composeApp/src/main/res/mipmap-anydpi-v26/logo.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composeApp/src/main/res/mipmap-anydpi-v26/logo_round.xml" beforeDir="false" afterPath="$PROJECT_DIR$/composeApp/src/main/res/mipmap-anydpi-v26/logo_round.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composeApp/src/main/res/mipmap-hdpi/logo_round.webp" beforeDir="false" afterPath="$PROJECT_DIR$/composeApp/src/main/res/mipmap-hdpi/logo_round.webp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composeApp/src/main/res/mipmap-mdpi/logo.webp" beforeDir="false" afterPath="$PROJECT_DIR$/composeApp/src/main/res/mipmap-mdpi/logo.webp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composeApp/src/main/res/mipmap-mdpi/logo_round.webp" beforeDir="false" afterPath="$PROJECT_DIR$/composeApp/src/main/res/mipmap-mdpi/logo_round.webp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composeApp/src/main/res/mipmap-xxhdpi/logo_round.webp" beforeDir="false" afterPath="$PROJECT_DIR$/composeApp/src/main/res/mipmap-xxhdpi/logo_round.webp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composeApp/src/main/res/mipmap-xxxhdpi/logo_round.webp" beforeDir="false" afterPath="$PROJECT_DIR$/composeApp/src/main/res/mipmap-xxxhdpi/logo_round.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composeApp/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/composeApp/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composeApp/src/androidMain/kotlin/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/composeApp/src/androidMain/kotlin/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composeApp/src/commonMain/kotlin/com/taxicompany/app/core/TokenStorage.kt" beforeDir="false" afterPath="$PROJECT_DIR$/composeApp/src/commonMain/kotlin/com/taxicompany/app/core/TokenStorage.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composeApp/src/commonMain/kotlin/com/taxicompany/app/di/NetworkModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/composeApp/src/commonMain/kotlin/com/taxicompany/app/di/NetworkModule.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composeApp/src/commonMain/kotlin/com/taxicompany/app/ui/App.kt" beforeDir="false" afterPath="$PROJECT_DIR$/composeApp/src/commonMain/kotlin/com/taxicompany/app/ui/App.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composeApp/src/desktopMain/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/composeApp/src/desktopMain/kotlin/Main.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +72,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[LocalEmulator::path=C:\Users\Bogumil\.android\avd\Pixel_10_Pro.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[PhysicalDevice::serial=R5CWB1JMW1L]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -106,6 +94,13 @@
         </projects_view>
       </state>
     </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -149,6 +144,11 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;templates.modelproviders.configurable&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="K2MoveDeclarationsDialog.RECENT_PACKAGE_KEY">
+      <recent name="com.taxicompany.app.com.taxicompany.app.core" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="composeApp" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
       <module name="TaxiCompanyApp.composeApp" />
@@ -249,25 +249,61 @@
       <option name="project" value="LOCAL" />
       <updated>1789142524091</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="changed logo">
+      <option name="closed" value="true" />
+      <created>1789144194251</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1789144194251</updated>
+    </task>
+    <task id="LOCAL-00005" summary="changed: logging to none and supress warnings">
+      <option name="closed" value="true" />
+      <created>1790501428979</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1790501428979</updated>
+    </task>
+    <task id="LOCAL-00006" summary="added: TODO in TokenStorage.kt">
+      <option name="closed" value="true" />
+      <created>1790502270766</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1790502270766</updated>
+    </task>
+    <task id="LOCAL-00007" summary="changed: TODO in TokenStorage.kt">
+      <option name="closed" value="true" />
+      <created>1790502617120</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1790502617120</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added README.md and small fixes" />
     <MESSAGE value="added icon" />
-    <option name="LAST_COMMIT_MESSAGE" value="added icon" />
+    <MESSAGE value="changed logo" />
+    <MESSAGE value="changed: logging to none and supress warnings" />
+    <MESSAGE value="added: TODO in TokenStorage.kt" />
+    <MESSAGE value="changed: TODO in TokenStorage.kt" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed: TODO in TokenStorage.kt" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">
       <map>
         <entry key="com.taxicompany.app">
           <value>
-            <CheckInfo lastCheckTimestamp="1789136377782" />
+            <CheckInfo lastCheckTimestamp="1790439422427" />
           </value>
         </entry>
         <entry key="com.taxicompany.app.test">
           <value>
-            <CheckInfo lastCheckTimestamp="1789136377782" />
+            <CheckInfo lastCheckTimestamp="1790439422439" />
           </value>
         </entry>
       </map>

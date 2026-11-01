@@ -1,8 +1,8 @@
 package com.taxicompany.app.di
 
-import com.russhwolf.settings.Settings
+//import com.russhwolf.settings.Settings
 import com.taxicompany.app.core.HttpClientFactory
-import com.taxicompany.app.core.SettingsTokenStorage
+import com.taxicompany.app.core.SecureTokenStorage
 import com.taxicompany.app.core.TokenStorage
 import com.taxicompany.app.data.remote.api.AuthApi
 import com.taxicompany.app.data.remote.api.DriversApi
@@ -17,8 +17,8 @@ import com.taxicompany.app.data.repository.VehiclesRepository
 import org.koin.dsl.module
 
 val networkModule = module {
-    single<Settings> { Settings() }
-    single<TokenStorage> { SettingsTokenStorage(get()) }
+//    single<Settings> { Settings() }
+    single<TokenStorage> { SecureTokenStorage(get()) }
     single { HttpClientFactory.create(get()) }
 
     single { AuthApi(get()) }
