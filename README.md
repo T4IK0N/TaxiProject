@@ -1,6 +1,6 @@
 # Taxi Project
 
-🇵🇱 [Polska wersja](README.pl.md)
+🇵🇱 [Polska wersja](README-PL.md)
 
 `TaxiProject` is a **monorepo** containing a mobile/desktop app, a backend and a web application.
 
