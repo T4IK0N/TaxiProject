@@ -18,6 +18,13 @@ import kotlinx.datetime.minus
 import kotlinx.datetime.plus
 import kotlinx.datetime.todayIn
 
+// TODO: Fix infinite reload loop when the token expires during initial load
+//  notifyAuthError() increments sessionKey, which recreates the ViewModel,
+//  which immediately refetches with the same invalid token and fails again.
+//  Break the cycle, e.g. do not refetch after an auth error and let the
+//  session-expired flow handle navigation to login.
+//  labels: bug
+
 /**
  * State holder dla ekranu grafiku
  */

@@ -3,6 +3,12 @@ package com.taxicompany.app.core
 import com.github.javakeyring.Keyring
 import com.github.javakeyring.PasswordAccessException
 
+// TODO: Add a fallback when no system keyring is available
+//  Keyring.create() throws on Linux without a running Secret Service
+//  (GNOME Keyring / KWallet). Catch it and show a clear message to the user
+//  instead of crashing at startup.
+//  labels: bug, enhancement
+
 class DesktopKeyringSecretStore : SecretStore {
 
     private val keyring = Keyring.create()

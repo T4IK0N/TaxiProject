@@ -1,5 +1,10 @@
 package com.taxicompany.app.core
 
+// TODO: Add unit tests for SecureTokenStorage
+//  Use a fake in-memory SecretStore to cover save/get/clear and the
+//  saveAccessToken-only path.
+//  labels: enhancement
+
 class SecureTokenStorage(private val store: SecretStore) : TokenStorage {
 
     private companion object {

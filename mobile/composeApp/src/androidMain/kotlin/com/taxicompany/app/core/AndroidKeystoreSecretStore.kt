@@ -10,6 +10,11 @@ import javax.crypto.KeyGenerator
 import javax.crypto.SecretKey
 import javax.crypto.spec.GCMParameterSpec
 
+// TODO: Exclude secure_tokens preferences from Android backups
+//  Set android:allowBackup="false" or add the file to backup_rules.xml /
+//  data_extraction_rules.xml so ciphertext is never restored without its key.
+//  labels: enhancement
+
 class AndroidKeystoreSecretStore(context: Context) : SecretStore {
 
     private val prefs = context.applicationContext
